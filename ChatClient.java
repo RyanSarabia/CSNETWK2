@@ -104,6 +104,7 @@ public class ChatClient extends JFrame implements ActionListener {
         else {
             // send message to server
             pw.println(tfInput.getText());
+            tfInput.setText("");
         }
     }
 
