@@ -79,7 +79,8 @@ public class ChatClient extends JFrame implements ActionListener {
         //     pw.println("printLogs");
         else if(evt.getSource() == btnFile){
             fc = new FileChooser();
-                File curFile = fc.openFileChooser();
+            File curFile = fc.openFileChooser();
+            if (curFile !=null) {
                 pw.println("sendFile");
                 pw.println(curFile.getName());
                 try{
@@ -98,6 +99,7 @@ public class ChatClient extends JFrame implements ActionListener {
                 } catch(Exception ex) {
                     ex.printStackTrace();
                 }
+            }
         }      
         else {
             // send message to server
@@ -170,23 +172,29 @@ public class ChatClient extends JFrame implements ActionListener {
                         FileChooser fc = new FileChooser();
                         File path = fc.openDirectoryChooser();
 
-                        File newFile = new File(path.getAbsolutePath()+fileExt);
-                        newFile.createNewFile();
+                        if (path!=null) {
+                            File newFile = new File(path.getAbsolutePath()+fileExt);
+                            newFile.createNewFile();
 
-                        DataOutputStream dosWriter = new DataOutputStream(new FileOutputStream(newFile));
-                        DataInputStream disReader = new DataInputStream(client.getInputStream());
-                        pw.println("fileSendReady");
-                        long fileSize = disReader.readLong();
-                        int count;
-                        byte[] buffer = new byte[8192];
-                        while (fileSize > 0)
-                        {
-                            count = disReader.read(buffer);
-                            dosWriter.write(buffer, 0, count);
-                            fileSize -= count;
+                            DataOutputStream dosWriter = new DataOutputStream(new FileOutputStream(newFile));
+                            DataInputStream disReader = new DataInputStream(client.getInputStream());
+                            pw.println("fileSendReady");
+                            long fileSize = disReader.readLong();
+                            int count;
+                            byte[] buffer = new byte[8192];
+                            while (fileSize > 0)
+                            {
+                                count = disReader.read(buffer);
+                                dosWriter.write(buffer, 0, count);
+                                fileSize -= count;
+                            }
+                            dosWriter.flush();
+                            dosWriter.close();
                         }
-                        dosWriter.flush();
-                        dosWriter.close();
+
+                        else {
+                            //CODE FOR FILE SENDING FAILED
+                        }
 
                     }
                     else{
