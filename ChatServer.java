@@ -189,6 +189,8 @@ public class ChatServer {
 						newLog("Server", name, "File Send Failure");
 						System.out.println("File sending failed");
 					}
+					else if (users.size() < 2)
+						sendMessage("Server", "No other users present. Message not sent");
 					else 
 						broadcast(name,line); // method  of outer class - send messages to all		
 				} // end of while
