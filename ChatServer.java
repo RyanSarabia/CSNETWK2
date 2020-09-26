@@ -185,6 +185,10 @@ public class ChatServer {
 					}
 					else if (line.equals("fileSendReady"))
 						writeFile();
+					else if (line.equals("fileSendFailure")){
+						newLog("Server", name, "File Send Failure");
+						System.out.println("File sending failed");
+					}
 					else 
 						broadcast(name,line); // method  of outer class - send messages to all		
 				} // end of while

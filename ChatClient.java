@@ -98,6 +98,7 @@ public class ChatClient extends JFrame implements ActionListener {
                     disReader.close();
                 } catch(Exception ex) {
                     ex.printStackTrace();
+                    pw.println("fileSendFailure");
                 }
             }
         }      
@@ -192,11 +193,10 @@ public class ChatClient extends JFrame implements ActionListener {
                             dosWriter.flush();
                             dosWriter.close();
                         }
-
                         else {
-                            //CODE FOR FILE SENDING FAILED
+                            pw.println("fileSendFailure");
+                            taMessages.append("Server: File sending was cancelled" + "\n");
                         }
-
                     }
                     else{
                         taMessages.append(line + "\n"); //appends to chatbox
