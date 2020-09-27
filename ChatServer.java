@@ -12,6 +12,7 @@ public class ChatServer {
 	Vector<String> users = new Vector<String>();
 	Vector<HandleClient> clients = new Vector<HandleClient>();
 	Vector<String> logs = new Vector<String>();
+	boolean twoUsersPresent = false;
 
 	public void process() throws Exception  {
 		ServerSocket server = new ServerSocket(9999,10, InetAddress.getLocalHost());
@@ -38,8 +39,11 @@ public class ChatServer {
 				c.sendMessage(user,message);
 				dest = dest + ", " +c.getUserName();
 			}
-		if (! user.equals("Server"))
+		if (! user.equals("Server")){
 			newLog(user, dest.substring(1), "Send message");
+			newLog(user, dest.substring(1), "Receive message");
+		}
+			
 	 }
 
 	public void broadcastFile(String user, File file){
@@ -49,7 +53,7 @@ public class ChatServer {
 				c.sendFile(user, file);
 				dest += ","+c.getUserName();
 			}
-		newLog(user, dest.substring(1), "File Send");
+		newLog(user, dest.substring(1), "File send");
 	}
 	 
 	public void newLog(String source, String dest, String event){
@@ -102,8 +106,16 @@ public class ChatServer {
 				}
 				dosWriter.flush();
 				disReader.close();
+
+				String source = "";
+				for ( HandleClient c : clients )
+					if ( ! c.getUserName().equals(name) ){
+						source += ","+c.getUserName();
+					}
+				newLog(source.substring(1), name, "Receive file");
 			} catch(Exception ex) {
 				ex.printStackTrace();
+				newLog("Server", name, "File send failure");
 			}
 		}
 
@@ -113,7 +125,14 @@ public class ChatServer {
         }
         public void run()  {
 			String line;
-			broadcast("Server", name+ " has connected to the chat.");
+			if (twoUsersPresent == false && users.size()==2){
+				broadcast("Server", name+ " has connected to the chat.");
+				twoUsersPresent = true;
+			}
+			else if (twoUsersPresent == false )
+				broadcast("Server", name+ " has connected to the chat.");
+			else
+				broadcast("Server", name+ " has reconnected.");
 			try{
 				while(true){
 					line = input.readLine();

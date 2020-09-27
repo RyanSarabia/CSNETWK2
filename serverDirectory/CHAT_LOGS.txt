@@ -1,10 +1,6 @@
-2020-09-27 16:05:11.765 jhasjd to Server Login
-2020-09-27 16:05:37.116 jdhjahwd to Server Login
-2020-09-27 16:11:43.426 jdhjahwd to  jhasjd Send message
-2020-09-27 16:11:46.716 jhasjd to  jdhjahwd Send message
-2020-09-27 16:11:49.363 jdhjahwd to  jhasjd Send message
-2020-09-27 16:11:53.792 jhasjd to  jdhjahwd Send message
-2020-09-27 16:11:55.523 jdhjahwd to  jhasjd Send message
-2020-09-27 16:11:59.112 jhasjd to  jdhjahwd Send message
-2020-09-27 16:12:01.474 jhasjd to Server Logout
-2020-09-27 16:12:03.486 jdhjahwd to Server Logout
+2020-09-27 17:21:28.442 miko to Server Login
+2020-09-27 17:21:35.429 poi to Server Login
+2020-09-27 17:21:49.09 miko to poi File Send
+2020-09-27 17:21:57.997 Server to poi Receive file
+2020-09-27 17:22:02.973 poi to Server Logout
+2020-09-27 17:22:03.561 miko to Server Logout
