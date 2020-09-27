@@ -205,10 +205,8 @@ public class ChatServer {
 							sendMessage("Server", "No other user connected. File sending cancelled.");
 							newLog("Server", name, "File send failure");
 						}
-							
 						else 
 							broadcastFile(name, file);
-						
 					}
 					else if (line.equals("fileSendReady"))
 						writeFile();
@@ -220,7 +218,6 @@ public class ChatServer {
 						sendMessage("Server", "No other users present. Message not sent");
 						newLog("Server", name, "Message send failure");
 					}
-						
 					else 
 						broadcast(name,line); // method  of outer class - send messages to all		
 				} // end of while
