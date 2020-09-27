@@ -39,7 +39,7 @@ public class ChatClient extends JFrame implements ActionListener {
     public void buildInterface() {
         
         btnSend = new JButton("Send");
-        btnExit = new JButton("Exit");
+        btnExit = new JButton("Log Out");
         // btnLog = new JButton("Logs");
         btnFile = new JButton("Send File");
         taMessages = new JTextArea();
@@ -51,19 +51,24 @@ public class ChatClient extends JFrame implements ActionListener {
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         add(sp,"Center");
         JPanel bp = new JPanel( new FlowLayout());
+        JPanel bp2 = new JPanel( new FlowLayout());
+        JPanel whole = new JPanel();
+        whole.setLayout(new BoxLayout(whole, BoxLayout.Y_AXIS));
         bp.add(tfInput);
         bp.add(btnSend);
-        bp.add(btnFile);
+        bp2.add(btnFile);
         // bp.add(btnLog);
-        bp.add(btnExit);
-        add(bp,"South");
+        bp2.add(btnExit);
+        whole.add(bp);
+        whole.add(bp2);
+        add(whole,"South");
         btnSend.addActionListener(this);
         btnFile.addActionListener(this);
         btnExit.addActionListener(this);
         // btnLog.addActionListener(this);
 
         sp.getRootPane().setDefaultButton(btnSend);
-        btnSend.requestFocus();
+        btnSend.requestFocusInWindow();
         setSize(500,400);
         pack();
         setLocationRelativeTo(null);
@@ -130,6 +135,11 @@ public class ChatClient extends JFrame implements ActionListener {
             try {
                 ChatClient frame = new ChatClient( name ,servername, serverPort, serverAddress);
                 frame.addWindowListener(new WindowAdapter() {
+
+                    @Override
+                    public void windowOpened(WindowEvent e){
+                        frame.tfInput.requestFocusInWindow();
+                    }
 
                     @Override
                     public void windowClosing(WindowEvent e) {
