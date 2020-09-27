@@ -1,6 +1,2 @@
-2020-09-27 17:24:59.683 miko to Server Login
-2020-09-27 17:25:07.078 asdasd to Server Login
-2020-09-27 17:25:14.97 miko to asdasd File send
-2020-09-27 17:25:22.792 miko to asdasd Receive file
-2020-09-27 17:25:26.137 asdasd to Server Logout
-2020-09-27 17:25:26.785 miko to Server Logout
+2020-09-27 17:54:40.144 ksjkjsf to Server Login
+2020-09-27 17:54:48.215 ksjkjsf to Server Logout
