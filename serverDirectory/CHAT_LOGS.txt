@@ -1,6 +1,2 @@
-2020-09-27 17:21:28.442 miko to Server Login
-2020-09-27 17:21:35.429 poi to Server Login
-2020-09-27 17:21:49.09 miko to poi File Send
-2020-09-27 17:21:57.997 Server to poi Receive file
-2020-09-27 17:22:02.973 poi to Server Logout
-2020-09-27 17:22:03.561 miko to Server Logout
+2020-09-27 17:54:40.144 ksjkjsf to Server Login
+2020-09-27 17:54:48.215 ksjkjsf to Server Logout

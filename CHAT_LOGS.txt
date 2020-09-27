@@ -1,2 +1,8 @@
-2020-09-27 17:54:40.144 ksjkjsf to Server Login
-2020-09-27 17:54:48.215 ksjkjsf to Server Logout
+2020-09-27 22:56:21.771 miko to Server Login
+2020-09-27 22:56:23.539 Server to miko Message send failure
+2020-09-27 22:56:24.817 Server to miko Message send failure
+2020-09-27 22:56:25.134 Server to miko Message send failure
+2020-09-27 22:56:25.282 Server to miko Message send failure
+2020-09-27 22:56:26.55 Server to miko Message send failure
+2020-09-27 22:56:30.522 Server to miko File send failure
+2020-09-27 22:56:34.579 miko to Server Logout

@@ -201,8 +201,11 @@ public class ChatServer {
 						dosWriter.flush();
 						dosWriter.close();
 
-						if(users.size() < 2)
+						if(users.size() < 2){
 							sendMessage("Server", "No other user connected. File sending cancelled.");
+							newLog("Server", name, "File send failure");
+						}
+							
 						else 
 							broadcastFile(name, file);
 						
@@ -210,11 +213,14 @@ public class ChatServer {
 					else if (line.equals("fileSendReady"))
 						writeFile();
 					else if (line.equals("fileSendFailure")){
-						newLog("Server", name, "File Send Failure");
+						newLog("Server", name, "File send failure");
 						System.out.println("File sending failed");
 					}
-					else if (users.size() < 2)
+					else if (users.size() < 2){
 						sendMessage("Server", "No other users present. Message not sent");
+						newLog("Server", name, "Message send failure");
+					}
+						
 					else 
 						broadcast(name,line); // method  of outer class - send messages to all		
 				} // end of while
