@@ -29,7 +29,7 @@ public class ChatClient extends JFrame implements ActionListener {
         buildInterface();
         this.addWindowListener(new WindowAdapter(){
             public void WindowClosing(WindowEvent e){
-                pw.println("end");
+                pw.println("END_CODE_123456");
                 System.exit(0);
             }
         });
@@ -77,7 +77,7 @@ public class ChatClient extends JFrame implements ActionListener {
     
     public void actionPerformed(ActionEvent evt) {
         if ( evt.getSource() == btnExit ) {
-            pw.println("end");  // send end to server so that server know about the termination
+            pw.println("END_CODE_123456");  // send end to server so that server know about the termination
             System.exit(0);
         }
         // else if (evt.getSource() == btnLog)
@@ -143,7 +143,7 @@ public class ChatClient extends JFrame implements ActionListener {
 
                     @Override
                     public void windowClosing(WindowEvent e) {
-                        frame.pw.println("end");
+                        frame.pw.println("END_CODE_123456");
                         System.exit(0);
                     }
                 });

@@ -136,7 +136,7 @@ public class ChatServer {
 			try{
 				while(true){
 					line = input.readLine();
-					if (line.equals("end")){
+					if (line.equals("END_CODE_123456")){
 						broadcast("Server", name+ " has disconnected...");
 						clients.remove(this);
 						users.remove(name);
