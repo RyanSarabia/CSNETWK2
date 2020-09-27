@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 import java.net.*;
 import java.sql.*;
@@ -124,7 +125,11 @@ public class ChatServer {
 						if(users.size()==0){
 							out.println("Both users disconnected...");
 							out.println("Shutting down server");
-							int saveLogs = JOptionPane.showConfirmDialog(null, "Save logs?", "Do you want to save logs?", JOptionPane.YES_NO_OPTION);
+							JFrame frmOpt = new JFrame();
+							int saveLogs = JOptionPane.showConfirmDialog(frmOpt, "Save logs?", "Do you want to save logs?", JOptionPane.YES_NO_OPTION);
+							frmOpt.setLocationRelativeTo(null);
+							frmOpt.setAlwaysOnTop(true);
+							frmOpt.setVisible(true);
 							if(saveLogs == JOptionPane.YES_OPTION)
 								{
 									try{

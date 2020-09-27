@@ -65,9 +65,9 @@ public class ChatClient extends JFrame implements ActionListener {
         sp.getRootPane().setDefaultButton(btnSend);
         btnSend.requestFocus();
         setSize(500,400);
-        setVisible(true);
         pack();
         setLocationRelativeTo(null);
+        setVisible(true);
     }
     
     public void actionPerformed(ActionEvent evt) {
@@ -122,19 +122,29 @@ public class ChatClient extends JFrame implements ActionListener {
             JOptionPane.PLAIN_MESSAGE);
         String serverAddress = JOptionPane.showInputDialog(null,"Enter the IP Address:", "IP Address",
             JOptionPane.PLAIN_MESSAGE);
-        int serverPort = Integer.parseInt(serverPortString);
-        String servername = "localhost";  
-        try {
-            ChatClient frame = new ChatClient( name ,servername, serverPort, serverAddress);
-            frame.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    frame.pw.println("end");
-                    System.exit(0);
-                }
-            });
-        } catch(Exception ex) {
-            out.println( "Error --> " + ex.getMessage());
+
+        if (name != null && serverPortString != null && serverAddress !=null ){
+            int serverPort = Integer.parseInt(serverPortString);
+            String servername = "localhost";  
+            
+            try {
+                ChatClient frame = new ChatClient( name ,servername, serverPort, serverAddress);
+                frame.addWindowListener(new WindowAdapter() {
+
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        frame.pw.println("end");
+                        System.exit(0);
+                    }
+                });
+            } catch(Exception ex) {
+                out.println( "Error --> " + ex.getMessage());
+            }
+        }
+
+        else {
+            out.println("Error --> Insufficient input to connect to server");
+            System.exit(0);
         }
         
     } // end of main
